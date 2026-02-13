@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Be My Valentine 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #ffffff;
+      color: #333;
+      position: absolute;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .yay {
+      font-size: 1.5rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- First Screen -->
+  <div class="container" id="questionScreen">
+    <h1>Will you be my Valentine? 💖</h1>
+    <div class="buttons">
+      <button id="yesBtn">Yes 🥰</button>
+      <button id="noBtn">No 🙄</button>
+    </div>
+  </div>
+
+  <!-- Yay Screen -->
+  <div class="container hidden" id="yayScreen">
+    <h1>YAYYYY 💕</h1>
+    <p class="yay">
+      Look pretty 😌<br />
+      Show up at our usual meeting place at <b>12:00 PM</b> ⏰<br />
+      I can’t wait ❤️
+    </p>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const questionScreen = document.getElementById("questionScreen");
+    const yayScreen = document.getElementById("yayScreen");
+
+    function moveNoButton() {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    }
+
+    // Mobile + desktop support
+    noBtn.addEventListener("touchstart", moveNoButton);
+    noBtn.addEventListener("mouseover", moveNoButton);
+
+    yesBtn.addEventListener("click", () => {
+      questionScreen.classList.add("hidden");
+      yayScreen.classList.remove("hidden");
+    });
+  </script>
+</body>
+</html>
